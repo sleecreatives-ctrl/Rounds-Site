@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rounds — Shift intelligence for nurses.</title>
+<meta name="description" content="Rounds generates morning briefs, handoffs, and SBAR calls for hospital nurses."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --accent: #e11d48;
+  --accent-light: rgba(225,29,72,0.07);
+  --text: #0a0a0a; --sub: #6b7280; --muted: #9ca3af;
+  --border: #e5e7eb; --white: #ffffff; --light: #f9fafb;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 56px;
+  background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.logo-word { font-family: 'Instrument Serif', serif; font-size: 1.15rem; color: var(--text); }
+.nav-right { display: flex; align-items: center; gap: 0.75rem; }
+.nav-sirius { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+.nav-sirius:hover { color: var(--sub); }
+.nav-div { width: 1px; height: 14px; background: var(--border); }
+.btn-accent { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500; color: var(--white); background: var(--accent); border: none; cursor: pointer; padding: 0.45rem 1rem; border-radius: 5px; }
+.btn-accent:hover { opacity: 0.85; }
+.btn-ghost-nav { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--sub); background: none; border: none; cursor: pointer; }
+
+/* HERO */
+.hero { padding: 13rem 2.5rem 9rem; max-width: 860px; margin: 0 auto; }
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 6.5vw, 6rem);
+  font-weight: 400; line-height: 1.05;
+  letter-spacing: -0.025em; margin-bottom: 1.75rem;
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero p { font-size: 1rem; color: var(--sub); font-weight: 300; line-height: 1.75; max-width: 420px; margin-bottom: 2.25rem; }
+.hero-note { font-size: 0.75rem; color: var(--muted); margin-top: 0.85rem; }
+.hero-actions { display: flex; align-items: center; gap: 1rem; }
+.btn-primary { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; color: var(--white); background: var(--accent); border: none; cursor: pointer; padding: 0.75rem 1.5rem; border-radius: 6px; }
+.btn-primary:hover { opacity: 0.85; }
+.btn-ghost { font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--sub); background: none; border: none; cursor: pointer; }
+.btn-ghost:hover { color: var(--text); }
+
+/* HOW */
+.how-section { border-top: 1px solid var(--border); padding: 5rem 2.5rem; max-width: 860px; margin: 0 auto; }
+.how-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 3rem; }
+.how-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; }
+.how-step-time { font-size: 0.7rem; font-weight: 500; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.how-step-title { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.4rem; }
+.how-step-desc { font-size: 0.82rem; color: var(--sub); font-weight: 300; line-height: 1.65; }
+.how-step-time-saved { font-size: 0.75rem; color: var(--muted); margin-top: 0.6rem; }
+
+/* FEATURES */
+.features { border-top: 1px solid var(--border); }
+.feature {
+  display: grid; grid-template-columns: 280px 1fr;
+  align-items: start; gap: 3rem;
+  padding: 2.5rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.feature-name { font-size: 0.875rem; font-weight: 500; color: var(--text); }
+.feature-desc { font-size: 0.875rem; color: var(--sub); font-weight: 300; line-height: 1.7; }
+
+/* PRICING */
+.pricing-section { padding: 6rem 2.5rem; max-width: 860px; margin: 0 auto; }
+.pricing-title { font-family: 'Instrument Serif', serif; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 400; margin-bottom: 2.5rem; letter-spacing: -0.01em; }
+.plans { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.plan { background: var(--white); padding: 2rem; }
+.plan.featured { background: var(--accent); }
+.plan-tier { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.85rem; }
+.plan.featured .plan-tier { color: rgba(255,255,255,.55); }
+.plan-price { font-family: 'Instrument Serif', serif; font-size: 2.5rem; font-weight: 400; letter-spacing: -0.02em; line-height: 1; margin-bottom: 0.25rem; }
+.plan.featured .plan-price { color: var(--white); }
+.plan-period { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.5rem; }
+.plan.featured .plan-period { color: rgba(255,255,255,.5); }
+.plan ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.75rem; }
+.plan ul li { font-size: 0.82rem; color: var(--sub); padding-left: 1rem; position: relative; font-weight: 300; }
+.plan ul li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+.plan.featured ul li { color: rgba(255,255,255,.75); }
+.plan.featured ul li::before { color: rgba(255,255,255,.35); }
+.plan-btn { font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; width: 100%; padding: 0.65rem; border-radius: 7px; cursor: pointer; }
+.plan-btn.outline { background: none; border: 1px solid var(--border); color: var(--text); }
+.plan-btn.outline:hover { border-color: var(--accent); color: var(--accent); }
+.plan-btn.solid { background: var(--white); border: none; color: var(--accent); }
+
+/* FOOTER */
+footer { padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); }
+.footer-logo { display: flex; align-items: center; gap: 7px; text-decoration: none; }
+.footer-word { font-family: 'Instrument Serif', serif; font-size: 0.9rem; color: var(--muted); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; }
+.footer-links a:hover { color: var(--sub); }
+.footer-copy { font-size: 0.75rem; color: var(--muted); }
+
+/* AUTH */
+.overlay { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,.25); backdrop-filter: blur(6px); align-items: center; justify-content: center; }
+.overlay.open { display: flex; }
+.modal { background: var(--white); border-radius: 14px; padding: 2.5rem; width: 100%; max-width: 380px; margin: 1.25rem; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,.1); border: 1px solid var(--border); }
+.modal-x { position: absolute; top: 14px; right: 14px; width: 26px; height: 26px; border-radius: 50%; background: var(--light); border: none; cursor: pointer; font-size: 1rem; color: var(--sub); display: flex; align-items: center; justify-content: center; }
+.m-title { font-family: 'Instrument Serif', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.25rem; }
+.m-sub { font-size: 0.82rem; color: var(--sub); margin-bottom: 1.5rem; }
+.m-label { font-size: 0.72rem; font-weight: 500; color: var(--sub); display: block; margin-bottom: 4px; }
+.m-input { font-family: 'Inter', sans-serif; font-size: 0.875rem; background: var(--light); border: 1px solid var(--border); color: var(--text); border-radius: 7px; padding: 0.6rem 0.85rem; width: 100%; outline: none; margin-bottom: 0.75rem; transition: border-color 0.15s; }
+.m-input:focus { border-color: var(--accent); }
+.m-btn { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; color: var(--white); background: var(--accent); border: none; cursor: pointer; padding: 0.7rem; width: 100%; border-radius: 7px; margin-top: 0.25rem; }
+.m-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.m-footer { text-align: center; margin-top: 1rem; font-size: 0.78rem; color: var(--sub); }
+.m-footer a { color: var(--accent); text-decoration: none; font-weight: 500; cursor: pointer; }
+.m-msg { font-size: 0.78rem; margin-bottom: 0.75rem; }
+.m-err { color: #dc2626; }
+.m-ok  { color: #16a34a; }
+.m-div { display: flex; align-items: center; gap: 10px; margin-bottom: 0.85rem; }
+.m-div::before, .m-div::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.m-div span { font-size: 0.7rem; color: var(--muted); }
+.g-btn { font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--text); background: var(--white); border: 1px solid var(--border); cursor: pointer; padding: 0.6rem; width: 100%; border-radius: 7px; margin-bottom: 0.85rem; display: flex; align-items: center; justify-content: center; gap: 9px; }
+.g-btn:hover { background: var(--light); }
+.m-forgot { text-align: right; margin-top: -0.35rem; margin-bottom: 0.85rem; }
+.m-forgot a { font-size: 0.75rem; color: var(--sub); text-decoration: none; cursor: pointer; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 1.25rem; }
+  .hero { padding: 9rem 1.25rem 6rem; }
+  .how-section { padding: 3.5rem 1.25rem; }
+  .how-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .feature { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.75rem 1.25rem; }
+  .pricing-section { padding: 4rem 1.25rem; }
+  .plans { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 1rem; align-items: flex-start; padding: 1.5rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="overlay" id="authOverlay">
+  <div class="modal">
+    <button class="modal-x" onclick="closeAuth()">×</button>
+    <div id="authContent"></div>
+  </div>
+</div>
+
+<nav>
+  <a href="#" class="logo">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1 L10.2 7.8 L17 9 L10.2 10.2 L9 17 L7.8 10.2 L1 9 L7.8 7.8 Z" fill="#e11d48"/></svg>
+    <span class="logo-word">Rounds</span>
+  </a>
+  <div class="nav-right">
+    <a href="https://sirius-ai.co" class="nav-sirius">by Sirius</a>
+    <div class="nav-div"></div>
+    <button class="btn-ghost-nav" onclick="openAuth('signin')">Sign in</button>
+    <button class="btn-accent" onclick="openAuth('signup')">Get started free</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Less charting.<br/><em>More care.</em></h1>
+  <p>Rounds generates your morning brief, shift handoff, and SBAR calls from the notes you already write. Open it twice a shift. That's it.</p>
+  <div class="hero-actions">
+    <button class="btn-primary" onclick="openAuth('signup')">Start your first shift</button>
+    <button class="btn-ghost">See how it works →</button>
+  </div>
+  <p class="hero-note">Free to start. No hospital IT approval needed. Works tonight.</p>
+</section>
+
+<div class="how-section">
+  <p class="how-label">How it works</p>
+  <div class="how-grid">
+    <div>
+      <div class="how-step-time">07:00 — Start of shift</div>
+      <div class="how-step-title">Paste your assignment</div>
+      <div class="how-step-desc">Type or paste your brain sheet. Rounds generates a morning brief and clinical suggestions for every patient before you leave the nursing station.</div>
+      <div class="how-step-time-saved">~3 minutes for 6 patients</div>
+    </div>
+    <div>
+      <div class="how-step-time">During shift — as needed</div>
+      <div class="how-step-title">SBAR and team notes</div>
+      <div class="how-step-desc">Patient transferring? Calling an attending? Generate a complete SBAR in 10 seconds. Leave notes for the care team without picking up the phone.</div>
+      <div class="how-step-time-saved">Use it when you need it</div>
+    </div>
+    <div>
+      <div class="how-step-time">18:45 — End of shift</div>
+      <div class="how-step-title">Dump your notes</div>
+      <div class="how-step-desc">Paste whatever you've jotted — messy, abbreviated, out of order. Rounds structures it into a complete handoff note per patient. Copy to your EHR. Go home.</div>
+      <div class="how-step-time-saved">~5 minutes for 6 patients</div>
+    </div>
+  </div>
+</div>
+
+<div class="features">
+  <div class="feature">
+    <div class="feature-name">Morning brief generator</div>
+    <div class="feature-desc">Paste your patient assignment. Get a one-paragraph clinical summary per patient — organized by acuity, ready in seconds.</div>
+  </div>
+  <div class="feature">
+    <div class="feature-name">AI clinical suggestions</div>
+    <div class="feature-desc">Rounds reads what you've documented and surfaces specific flags — post-op day 3 with no BM, BP trending up, discharge tomorrow without PT/OT. The things that fall through the cracks.</div>
+  </div>
+  <div class="feature">
+    <div class="feature-name">SBAR generator</div>
+    <div class="feature-desc">Complete Situation, Background, Assessment, Recommendation — generated from what's already in the system. Read it, adapt it, make the call.</div>
+  </div>
+  <div class="feature">
+    <div class="feature-name">Care team thread</div>
+    <div class="feature-desc">A per-patient thread for nurses, attendings, and charge nurses. Replaces phone tag and lost pages. Everyone sees the same real-time picture.</div>
+  </div>
+  <div class="feature">
+    <div class="feature-name">Shift handoff generator</div>
+    <div class="feature-desc">Dump your end-of-shift notes in any format. Rounds structures them into a complete, professional handoff per patient. Copy to your EHR and go home on time.</div>
+  </div>
+</div>
+
+<div class="pricing-section">
+  <h2 class="pricing-title">Free for nurses.<br/>Built for hospitals.</h2>
+  <p style="font-size:0.9rem;color:#6b7280;font-weight:300;line-height:1.75;max-width:480px;margin-bottom:2.5rem;">Individual nurses use Rounds free, forever. When your hospital is ready to adopt it officially, we offer unit and enterprise plans with SSO, compliance documentation, and dedicated support.</p>
+  <div class="plans">
+    <div class="plan featured">
+      <div class="plan-tier">Individual</div>
+      <div class="plan-price" style="color:white;">$0</div>
+      <div class="plan-period">free forever</div>
+      <ul>
+        <li>Unlimited patients</li>
+        <li>Morning brief generator</li>
+        <li>Shift handoff generator</li>
+        <li>SBAR generator</li>
+        <li>AI clinical suggestions</li>
+        <li>Care team thread</li>
+      </ul>
+      <button class="plan-btn solid" onclick="openAuth('signup')">Start tonight</button>
+    </div>
+    <div class="plan">
+      <div class="plan-tier">Team</div>
+      <div class="plan-price">$299</div>
+      <div class="plan-period">per unit / month</div>
+      <ul>
+        <li>Everything in Individual</li>
+        <li>Hospital SSO</li>
+        <li>Admin dashboard</li>
+        <li>Charge nurse floor view</li>
+        <li>Unit-wide shared threads</li>
+        <li>HIPAA BAA included</li>
+        <li>Dedicated onboarding</li>
+      </ul>
+      <button class="plan-btn outline" onclick="window.location.href='mailto:samleebu12@gmail.com?subject=Rounds Team Plan'">Contact us</button>
+    </div>
+    <div class="plan">
+      <div class="plan-tier">Enterprise</div>
+      <div class="plan-price" style="font-size:1.75rem;padding-top:0.35rem;">Custom</div>
+      <div class="plan-period">multi-unit or hospital-wide</div>
+      <ul>
+        <li>Everything in Team</li>
+        <li>Multi-unit deployment</li>
+        <li>FHIR / EHR integration</li>
+        <li>Custom compliance docs</li>
+        <li>IT-approved deployment</li>
+        <li>Executive reporting</li>
+      </ul>
+      <button class="plan-btn outline" onclick="window.location.href='mailto:samleebu12@gmail.com?subject=Rounds Enterprise'">Talk to us</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="#" class="footer-logo">
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1 L7.4 5.1 L12 6.5 L7.4 7.9 L6.5 12 L5.6 7.9 L1 6.5 L5.6 5.1 Z" fill="#e11d48"/></svg>
+    <span class="footer-word">Rounds</span>
+  </a>
+  <span class="footer-copy">© 2025 Sirius AI</span>
+  <div class="footer-links">
+    <a href="https://sirius-ai.co">Sirius</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+  </div>
+</footer>
+
+<script>
+const SUPABASE_URL  = 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON = 'YOUR_SUPABASE_ANON_KEY';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+sb.auth.getSession().then(({ data: { session } }) => { if (session?.user) setSignedIn(session.user); });
+sb.auth.onAuthStateChange((e, s) => {
+  if (e === 'SIGNED_IN' && s?.user) setSignedIn(s.user);
+  if (e === 'SIGNED_OUT') setSignedOut();
+});
+
+function setSignedIn(user) {
+  const name = user.user_metadata?.name?.split(' ')[0] || user.email?.split('@')[0];
+  document.querySelector('.nav-right').innerHTML = `<a href="https://sirius-ai.co" class="nav-sirius">by Sirius</a><div class="nav-div"></div><span style="font-size:0.8rem;color:#6b7280;">Hi, ${name}</span><button class="btn-accent" onclick="window.location.href='/app'">Open Rounds →</button>`;
+}
+function setSignedOut() { location.reload(); }
+
+document.getElementById('authOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeAuth(); });
+function openAuth(mode) { renderAuth(mode); document.getElementById('authOverlay').classList.add('open'); }
+function closeAuth() { document.getElementById('authOverlay').classList.remove('open'); }
+
+function renderAuth(mode) {
+  document.getElementById('authContent').innerHTML = `
+    <h2 class="m-title">${mode === 'signup' ? 'Start your first shift' : 'Welcome back'}</h2>
+    <p class="m-sub">${mode === 'signup' ? 'Free to start. Your Sirius account works across all products.' : 'Sign in to your Sirius account.'}</p>
+    <button class="g-btn" onclick="googleSignIn()">
+      <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      Continue with Google
+    </button>
+    <div class="m-div"><span>or</span></div>
+    ${mode === 'signup' ? `<label class="m-label">Full name</label><input class="m-input" id="mName" placeholder="Your name"/>` : ''}
+    <label class="m-label">Email</label>
+    <input class="m-input" id="mEmail" type="email" placeholder="you@hospital.com"/>
+    <label class="m-label">Password</label>
+    <input class="m-input" id="mPass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAuth('${mode}')"/>
+    ${mode === 'signin' ? `<div class="m-forgot"><a onclick="renderForgot()">Forgot password?</a></div>` : ''}
+    <div id="mMsg"></div>
+    <button class="m-btn" id="mBtn" onclick="doAuth('${mode}')">${mode === 'signup' ? 'Create account' : 'Sign in'}</button>
+    <p class="m-footer">${mode === 'signup' ? 'Already have an account? ' : 'New here? '}<a onclick="renderAuth('${mode === 'signup' ? 'signin' : 'signup'}')">${mode === 'signup' ? 'Sign in' : 'Create account'}</a></p>`;
+}
+
+function renderForgot() {
+  document.getElementById('authContent').innerHTML = `
+    <h2 class="m-title">Reset password</h2>
+    <p class="m-sub">We'll send a reset link to your email.</p>
+    <label class="m-label">Email</label>
+    <input class="m-input" id="mEmail" type="email" placeholder="you@hospital.com" onkeydown="if(event.key==='Enter')doReset()"/>
+    <div id="mMsg"></div>
+    <button class="m-btn" onclick="doReset()">Send reset link</button>
+    <p class="m-footer"><a onclick="renderAuth('signin')">← Back</a></p>`;
+}
+
+async function doAuth(mode) {
+  const email = document.getElementById('mEmail')?.value?.trim();
+  const pass  = document.getElementById('mPass')?.value;
+  const name  = document.getElementById('mName')?.value?.trim();
+  const btn = document.getElementById('mBtn'), msg = document.getElementById('mMsg');
+  if (!email || !pass) { msg.innerHTML = '<p class="m-msg m-err">Please fill in all fields.</p>'; return; }
+  btn.disabled = true; btn.textContent = 'Please wait…'; msg.innerHTML = '';
+  if (mode === 'signup') {
+    const { error } = await sb.auth.signUp({ email, password: pass, options: { data: { name: name || '' } } });
+    if (error) { msg.innerHTML = `<p class="m-msg m-err">${error.message}</p>`; btn.disabled = false; btn.textContent = 'Create account'; return; }
+    msg.innerHTML = '<p class="m-msg m-ok">Check your email to confirm.</p>'; btn.textContent = 'Done';
+  } else {
+    const { error } = await sb.auth.signInWithPassword({ email, password: pass });
+    if (error) { msg.innerHTML = `<p class="m-msg m-err">${error.message}</p>`; btn.disabled = false; btn.textContent = 'Sign in'; return; }
+    closeAuth(); window.location.href = '/app';
+  }
+}
+
+async function doReset() {
+  const email = document.getElementById('mEmail')?.value?.trim();
+  const msg = document.getElementById('mMsg');
+  if (!email) { msg.innerHTML = '<p class="m-msg m-err">Enter your email first.</p>'; return; }
+  const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/reset-password` });
+  if (error) { msg.innerHTML = `<p class="m-msg m-err">${error.message}</p>`; return; }
+  msg.innerHTML = '<p class="m-msg m-ok">Reset link sent.</p>';
+}
+
+async function googleSignIn() {
+  await sb.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: `${window.location.origin}/app` } });
+}
+</script>
+</body>
+</html>
