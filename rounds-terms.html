@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Terms of Service — Rounds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --accent: #e11d48;
+  --text: #0a0a0a; --sub: #6b7280; --muted: #9ca3af;
+  --border: #e5e7eb; --light: #f9fafb; --white: #ffffff;
+  --pad-x: 3.5rem;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--pad-x); height: 58px;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.logo-word { font-family: 'Instrument Serif', serif; font-size: 1.2rem; color: var(--text); }
+.nav-back { font-size: 0.82rem; color: var(--sub); text-decoration: none; transition: color 0.2s; }
+.nav-back:hover { color: var(--text); }
+
+.page-header { padding: 5rem var(--pad-x) 3.5rem; border-bottom: 1px solid var(--border); }
+.page-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.page-title { font-family: 'Instrument Serif', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem; }
+.page-meta { font-size: 0.82rem; color: var(--muted); }
+
+.content { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad-x) 6rem; }
+.section { margin-bottom: 3rem; }
+.section:last-child { margin-bottom: 0; }
+
+h2 { font-family: 'Instrument Serif', serif; font-size: 1.4rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 1rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.section:first-child h2 { border-top: none; padding-top: 0; }
+
+p { font-size: 0.9rem; color: var(--sub); line-height: 1.85; font-weight: 300; margin-bottom: 0.85rem; }
+p:last-child { margin-bottom: 0; }
+p strong { color: var(--text); font-weight: 500; }
+
+ul { list-style: none; margin: 0.5rem 0 0.85rem; display: flex; flex-direction: column; gap: 0.5rem; }
+ul li { font-size: 0.9rem; color: var(--sub); line-height: 1.7; font-weight: 300; padding-left: 1.25rem; position: relative; }
+ul li::before { content: '—'; position: absolute; left: 0; color: var(--muted); font-size: 0.8rem; }
+
+a { color: var(--text); }
+
+/* Critical disclaimer box */
+.critical-box {
+  background: #fff1f2;
+  border: 1px solid #fda4af;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.critical-box .critical-label {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.critical-box p {
+  color: #9f1239;
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+.critical-box p strong { color: #7f1d1d; }
+
+footer { border-top: 1px solid var(--border); padding: 1.75rem var(--pad-x); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.footer-word { font-family: 'Instrument Serif', serif; font-size: 0.95rem; color: var(--muted); }
+.footer-copy { font-size: 0.75rem; color: var(--muted); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--sub); }
+
+@media (max-width: 768px) {
+  :root { --pad-x: 1.5rem; }
+  footer { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://rounds.sirius-ai.co" class="logo">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M10 1 L11.4 8.6 L19 10 L11.4 11.4 L10 19 L8.6 11.4 L1 10 L8.6 8.6 Z" fill="#e11d48"/>
+    </svg>
+    <span class="logo-word">Rounds</span>
+  </a>
+  <a href="https://rounds.sirius-ai.co" class="nav-back">← Back to Rounds</a>
+</nav>
+
+<div class="page-header">
+  <p class="page-label">Legal</p>
+  <h1 class="page-title">Terms of Service</h1>
+  <p class="page-meta">Last updated: April 18, 2025 · Effective: April 18, 2025</p>
+</div>
+
+<div class="content">
+
+  <div class="critical-box">
+    <p class="critical-label">Important — read before using Rounds</p>
+    <p><strong>Rounds is a documentation assistance tool only. It is not a medical device, a clinical decision support system, or a substitute for professional clinical judgment.</strong> All AI-generated content — including morning briefs, shift handoffs, SBAR scripts, clinical suggestions, and translations — is provided for documentation and communication purposes only. No content generated by Rounds constitutes medical advice, a clinical diagnosis, or a treatment recommendation. All clinical decisions remain the sole responsibility of the licensed healthcare professional.</p>
+  </div>
+
+  <div class="section">
+    <h2>Agreement to terms</h2>
+    <p>These Terms of Service ("Terms") govern your access to and use of Rounds, a clinical documentation assistance platform operated by Sirius AI ("Sirius," "we," "us," or "our"). Rounds is accessible at rounds.sirius-ai.co and through any associated applications.</p>
+    <p>By creating an account or using Rounds in any way, you agree to be bound by these Terms. If you do not agree, you may not use Rounds. If you are using Rounds on behalf of a healthcare organization or employer, you represent that you have the authority to bind that organization to these Terms.</p>
+  </div>
+
+  <div class="section">
+    <h2>Nature of the service — documentation assistance only</h2>
+    <p><strong>Rounds is a documentation and communication assistance tool.</strong> It is designed to help nurses, physicians, and other healthcare professionals organize, structure, and generate clinical documentation more efficiently. It is not, and does not purport to be, any of the following:</p>
+    <ul>
+      <li>A medical device as defined by the U.S. Food and Drug Administration (FDA)</li>
+      <li>A clinical decision support system</li>
+      <li>A diagnostic tool</li>
+      <li>A source of medical advice, clinical recommendations, or treatment plans</li>
+      <li>A replacement for professional clinical judgment</li>
+      <li>A substitute for certified medical interpreter services</li>
+      <li>An electronic health record (EHR) or official medical record system</li>
+    </ul>
+    <p>All AI-generated content produced by Rounds — including but not limited to morning briefs, shift handoff notes, SBAR call scripts, clinical suggestions, AI flags, and language translations — is generated for the purpose of assisting with documentation and communication tasks. Such content is intended to be reviewed, verified, edited, and approved by a licensed healthcare professional before any use in patient care or official documentation.</p>
+    <p><strong>No content generated by Rounds should be acted upon without independent clinical verification by a qualified healthcare professional.</strong></p>
+  </div>
+
+  <div class="section">
+    <h2>Clinical responsibility — your obligations</h2>
+    <p>By using Rounds, you acknowledge and agree to the following:</p>
+    <ul>
+      <li><strong>You retain full clinical responsibility.</strong> All clinical decisions, assessments, diagnoses, and actions taken in connection with patient care remain the sole and exclusive responsibility of the licensed healthcare professional providing that care. Rounds does not share, assume, or diminish that responsibility in any way.</li>
+      <li><strong>You must verify all AI-generated content.</strong> Every piece of content generated by Rounds — including morning briefs, handoff notes, SBAR scripts, clinical suggestions, and translations — must be independently reviewed, verified for accuracy, and approved by a licensed healthcare professional before use. You may not relay, document, or act on AI-generated content without first exercising your own professional judgment.</li>
+      <li><strong>AI suggestions are documentation prompts, not clinical orders.</strong> When Rounds surfaces a suggestion — for example, noting that a bowel movement has not been documented, or that a vital sign appears elevated — this is a reminder to assess, document, or communicate. It is not a clinical finding, a diagnosis, or an instruction to take a specific clinical action. The underlying clinical assessment and decision is yours alone.</li>
+      <li><strong>Translations must be verified.</strong> Language translations generated by Rounds are provided to assist with communication only. They must be reviewed for accuracy before being shown to or relied upon by a patient. For complex clinical conversations, informed consent, or any situation where miscommunication could cause harm, you must use a certified medical interpreter through your hospital's language services program.</li>
+      <li><strong>SBAR scripts are starting points, not clinical reports.</strong> SBAR call scripts generated by Rounds are based on documentation you have provided. They are a communication framework only. You are responsible for verifying the accuracy of the content, adding any information that is missing, and adapting the script to reflect your own clinical assessment before using it in a call with a physician, specialist, or receiving unit.</li>
+      <li><strong>You are responsible for data accuracy.</strong> The quality of Rounds' outputs depends entirely on the accuracy and completeness of the information you enter. Rounds has no way to verify or validate clinical data you provide. Inaccurate inputs will produce inaccurate outputs.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>No liability for clinical outcomes</h2>
+    <p><strong>Sirius AI expressly disclaims all liability for any clinical outcomes, patient harm, medical errors, adverse events, miscommunications, or consequences of any kind arising from the use of — or reliance upon — any content generated by Rounds.</strong></p>
+    <p>This disclaimer applies without limitation to:</p>
+    <ul>
+      <li>Any action taken or not taken based on an AI-generated morning brief, shift handoff, SBAR script, clinical suggestion, or flag</li>
+      <li>Any patient communication conducted using an AI-generated translation</li>
+      <li>Any error, omission, inaccuracy, or hallucination in AI-generated content</li>
+      <li>Any miscommunication between healthcare staff members facilitated through the Rounds platform</li>
+      <li>Any failure of a staff member to review, verify, or exercise independent clinical judgment before acting on AI-generated content</li>
+      <li>Any delay in care caused by the use of or reliance upon Rounds</li>
+      <li>Any documentation error resulting from content generated by or copied from Rounds into an official medical record</li>
+    </ul>
+    <p>Rounds is a tool to assist documentation. The people using it are licensed professionals. Clinical responsibility belongs to those professionals. It does not transfer to Sirius AI under any circumstances.</p>
+  </div>
+
+  <div class="section">
+    <h2>No liability for staff actions or communications</h2>
+    <p>Sirius AI is not responsible for:</p>
+    <ul>
+      <li>The accuracy, completeness, or appropriateness of any communication made between staff members using the Rounds platform, including care team threads, direct messages, or transfer notes</li>
+      <li>Any miscommunication, misunderstanding, or failure to communicate between healthcare staff members using Rounds</li>
+      <li>Any action taken or not taken by a physician, nurse, nurse practitioner, physician assistant, or any other healthcare professional in response to a message, suggestion, or notification generated by or sent through Rounds</li>
+      <li>Any decision made by a hospital, health system, or healthcare organization based on information viewed in Rounds</li>
+      <li>Staff members providing false, inaccurate, or incomplete information when using the platform</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Employer and institutional responsibility</h2>
+    <p>If you are using Rounds within the scope of your employment at a hospital, clinic, or healthcare organization, your employer remains responsible for:</p>
+    <ul>
+      <li>Ensuring appropriate policies and procedures govern the use of third-party documentation tools within their institution</li>
+      <li>Training staff on the appropriate and lawful use of Rounds</li>
+      <li>Ensuring that Rounds has been reviewed and approved by the institution's compliance, legal, and IT departments before clinical use involving patient-identifiable information</li>
+      <li>Executing a Business Associate Agreement (BAA) with Sirius AI before any Protected Health Information (PHI) is entered into the platform</li>
+    </ul>
+    <p>Individual staff members who use Rounds without employer authorization do so at their own risk and assume personal responsibility for compliance with their employer's policies and applicable law.</p>
+  </div>
+
+  <div class="section">
+    <h2>De-identified use — no PHI on free tier</h2>
+    <p>The individual free tier of Rounds is designed for de-identified use. Users on the free tier must not enter any Protected Health Information (PHI) as defined by HIPAA, including patient names, dates of birth, medical record numbers, Social Security numbers, or any other information that could individually identify a patient.</p>
+    <p>Rounds is designed to function effectively using de-identified clinical information — room numbers, age, sex, diagnosis, and clinical notes — without requiring patient identifiers. Entering PHI into the platform without a signed BAA is a violation of HIPAA and these Terms.</p>
+    <p>Hospitals and health systems that wish to use Rounds with full PHI must execute a BAA with Sirius AI and enroll in a Team or Enterprise plan.</p>
+  </div>
+
+  <div class="section">
+    <h2>AI accuracy — known limitations</h2>
+    <p>AI-generated content is inherently imperfect. By using Rounds you acknowledge the following known limitations:</p>
+    <ul>
+      <li><strong>Hallucination.</strong> AI systems can generate content that sounds plausible but is factually incorrect. This is a known limitation of large language models. All AI-generated content in Rounds must be verified before use.</li>
+      <li><strong>Context limitations.</strong> Rounds generates content based only on information you provide. It has no access to the patient's full medical record, prior history, or real-time clinical data. Its outputs are only as good as its inputs.</li>
+      <li><strong>Translation limitations.</strong> AI-generated translations may contain errors, particularly with specialized medical terminology, regional dialects, or cultural nuances. They are not equivalent to certified medical interpretation.</li>
+      <li><strong>Suggestion limitations.</strong> AI suggestions are pattern-based and do not reflect clinical expertise. They may be irrelevant, incorrect, or incomplete in a given clinical context.</li>
+    </ul>
+    <p>Sirius AI makes no warranty that AI-generated content is accurate, complete, current, or suitable for any particular clinical purpose.</p>
+  </div>
+
+  <div class="section">
+    <h2>Eligibility and professional responsibility</h2>
+    <p>Rounds is intended for use by licensed healthcare professionals and authorized clinical staff only. By using Rounds, you represent that:</p>
+    <ul>
+      <li>You are a licensed or credentialed healthcare professional, or are operating under the supervision of one</li>
+      <li>You have the training and clinical judgment to evaluate, verify, and appropriately apply any content generated by Rounds</li>
+      <li>You will not use Rounds as a substitute for your own professional assessment or the assessment of a qualified clinician</li>
+      <li>You will not share access to Rounds with individuals who are not authorized to access patient-adjacent clinical information</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Acceptable use</h2>
+    <p>You agree not to use Rounds to:</p>
+    <ul>
+      <li>Enter, store, or transmit patient-identifiable information without a signed BAA and appropriate institutional authorization</li>
+      <li>Generate content intended to deceive patients, families, or other healthcare professionals</li>
+      <li>Circumvent your institution's clinical documentation policies or compliance requirements</li>
+      <li>Rely on AI-generated suggestions or translations without independent clinical verification</li>
+      <li>Use the platform for any purpose other than legitimate clinical documentation assistance</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Disclaimers</h2>
+    <p>Rounds is provided "as is" and "as available" without warranties of any kind. Sirius AI expressly disclaims all warranties, express or implied, including warranties of merchantability, fitness for a particular purpose, accuracy, and non-infringement.</p>
+    <p>Sirius AI does not warrant that Rounds will be uninterrupted, error-free, or free from inaccuracies. Sirius AI does not warrant that AI-generated content will be accurate, complete, or appropriate for any clinical use.</p>
+  </div>
+
+  <div class="section">
+    <h2>Limitation of liability</h2>
+    <p>To the maximum extent permitted by applicable law, Sirius AI and its officers, directors, employees, agents, and licensors shall not be liable for any indirect, incidental, special, consequential, punitive, or exemplary damages — including but not limited to damages for patient harm, clinical errors, medical malpractice, lost data, or business interruption — arising out of or related to your use of Rounds, even if Sirius AI has been advised of the possibility of such damages.</p>
+    <p>In no event shall Sirius AI's total liability to you for all claims arising from or related to Rounds exceed the greater of (a) the amount you paid to Sirius AI in the twelve months preceding the claim, or (b) one hundred dollars ($100 USD).</p>
+    <p>Some jurisdictions do not allow certain limitations of liability. The above limitations may not apply to you in full depending on your jurisdiction.</p>
+  </div>
+
+  <div class="section">
+    <h2>Indemnification</h2>
+    <p>You agree to indemnify, defend, and hold harmless Sirius AI and its officers, directors, employees, and agents from and against any claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or related to:</p>
+    <ul>
+      <li>Your use of Rounds</li>
+      <li>Your violation of these Terms</li>
+      <li>Any clinical decision made in connection with content generated by Rounds</li>
+      <li>Any patient harm, medical error, or adverse event associated with your use of Rounds</li>
+      <li>Your violation of any applicable law, regulation, or professional standard</li>
+      <li>Your entry of PHI into the platform without appropriate authorization and a signed BAA</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Changes to these terms</h2>
+    <p>We may update these Terms at any time. When we make material changes, we will notify you by email or by posting a notice within the platform at least 14 days before the changes take effect. Your continued use of Rounds after the effective date constitutes acceptance of the updated Terms.</p>
+  </div>
+
+  <div class="section">
+    <h2>Governing law</h2>
+    <p>These Terms are governed by the laws of the United States. Any disputes arising from these Terms or your use of Rounds shall be resolved in the courts of the United States, and you consent to personal jurisdiction in those courts.</p>
+  </div>
+
+  <div class="section">
+    <h2>Contact</h2>
+    <p>Questions about these Terms or Rounds' clinical disclaimer policy:</p>
+    <ul>
+      <li>Email: <a href="mailto:samleebu12@gmail.com">samleebu12@gmail.com</a></li>
+      <li>Website: <a href="https://rounds.sirius-ai.co">rounds.sirius-ai.co</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <a href="https://rounds.sirius-ai.co" class="footer-logo">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 1 L8 5.6 L13 7 L8 8.4 L7 13 L6 8.4 L1 7 L6 5.6 Z" fill="#e11d48"/>
+    </svg>
+    <span class="footer-word">Rounds</span>
+  </a>
+  <span class="footer-copy">© 2025 Sirius AI. All rights reserved.</span>
+  <div class="footer-links">
+    <a href="https://rounds.sirius-ai.co/privacy">Privacy</a>
+    <a href="https://rounds.sirius-ai.co/terms">Terms</a>
+    <a href="https://sirius-ai.co">Sirius</a>
+  </div>
+</footer>
+
+</body>
+</html>
