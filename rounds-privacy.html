@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy — Rounds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --accent: #e11d48;
+  --text: #0a0a0a; --sub: #6b7280; --muted: #9ca3af;
+  --border: #e5e7eb; --light: #f9fafb; --white: #ffffff;
+  --pad-x: 3.5rem;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--pad-x); height: 58px;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.logo-word { font-family: 'Instrument Serif', serif; font-size: 1.2rem; color: var(--text); }
+.nav-back { font-size: 0.82rem; color: var(--sub); text-decoration: none; }
+.nav-back:hover { color: var(--text); }
+
+.page-header { padding: 5rem var(--pad-x) 3.5rem; border-bottom: 1px solid var(--border); }
+.page-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.page-title { font-family: 'Instrument Serif', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem; }
+.page-meta { font-size: 0.82rem; color: var(--muted); }
+
+.content { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad-x) 6rem; }
+.section { margin-bottom: 3rem; }
+.section:last-child { margin-bottom: 0; }
+
+h2 { font-family: 'Instrument Serif', serif; font-size: 1.4rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 1rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.section:first-child h2 { border-top: none; padding-top: 0; }
+
+p { font-size: 0.9rem; color: var(--sub); line-height: 1.85; font-weight: 300; margin-bottom: 0.85rem; }
+p:last-child { margin-bottom: 0; }
+p strong { color: var(--text); font-weight: 500; }
+
+ul { list-style: none; margin: 0.5rem 0 0.85rem; display: flex; flex-direction: column; gap: 0.5rem; }
+ul li { font-size: 0.9rem; color: var(--sub); line-height: 1.7; font-weight: 300; padding-left: 1.25rem; position: relative; }
+ul li::before { content: '—'; position: absolute; left: 0; color: var(--muted); font-size: 0.8rem; }
+
+a { color: var(--text); }
+
+.info-box {
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.info-box p { font-size: 0.875rem; color: var(--sub); margin-bottom: 0; }
+
+footer { border-top: 1px solid var(--border); padding: 1.75rem var(--pad-x); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.footer-word { font-family: 'Instrument Serif', serif; font-size: 0.95rem; color: var(--muted); }
+.footer-copy { font-size: 0.75rem; color: var(--muted); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; }
+.footer-links a:hover { color: var(--sub); }
+
+@media (max-width: 768px) {
+  :root { --pad-x: 1.5rem; }
+  footer { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://rounds.sirius-ai.co" class="logo">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M10 1 L11.4 8.6 L19 10 L11.4 11.4 L10 19 L8.6 11.4 L1 10 L8.6 8.6 Z" fill="#e11d48"/>
+    </svg>
+    <span class="logo-word">Rounds</span>
+  </a>
+  <a href="https://rounds.sirius-ai.co" class="nav-back">← Back to Rounds</a>
+</nav>
+
+<div class="page-header">
+  <p class="page-label">Legal</p>
+  <h1 class="page-title">Privacy Policy</h1>
+  <p class="page-meta">Last updated: April 18, 2025 · Effective: April 18, 2025</p>
+</div>
+
+<div class="content">
+
+  <div class="info-box">
+    <p><strong>The short version:</strong> Rounds is built for de-identified clinical use. We do not require patient names or medical record numbers to function. We do not sell your data. We do not use clinical information you enter to train AI models. Individual nurses use Rounds free, and their data is theirs.</p>
+  </div>
+
+  <div class="section">
+    <h2>Overview</h2>
+    <p>Sirius AI ("Sirius," "we," "us," or "our") operates Rounds, a clinical documentation assistance platform. This Privacy Policy explains how we collect, use, store, and protect information when you use Rounds at rounds.sirius-ai.co or through any associated services.</p>
+    <p>Rounds is designed from the ground up to protect patient privacy. The free individual tier operates on de-identified clinical data — room numbers, clinical notes, and diagnoses — without requiring any patient-identifiable information. Hospitals and health systems that wish to use Rounds with full Protected Health Information (PHI) must execute a Business Associate Agreement (BAA) with Sirius AI.</p>
+  </div>
+
+  <div class="section">
+    <h2>Information we collect</h2>
+    <p><strong>Account information.</strong> When you create a Rounds account, we collect your name, email address, password, professional role, credentials, hospital, and unit. If you sign in with Google, we receive your name and email from Google's authentication service.</p>
+    <p><strong>Professional verification information.</strong> If you complete credential verification, we collect your NPI number or nursing license number. We use this to query publicly available government registries (the CMS NPI Registry and the Nursys database). We do not store any information beyond what you provide and what the registry returns.</p>
+    <p><strong>Clinical documentation you create.</strong> When you use Rounds during a shift, you enter de-identified patient information — room numbers, clinical notes, diagnoses, vitals, and shift observations. On the free individual tier, this information must not include patient names, dates of birth, or medical record numbers. This information is stored under your account and used to generate AI-assisted documentation.</p>
+    <p><strong>AI-generated content.</strong> Morning briefs, shift handoffs, SBAR scripts, clinical suggestions, and translations generated by Rounds are stored and associated with your account so you can reference them during and after your shift.</p>
+    <p><strong>Usage data.</strong> We collect information about how you use Rounds — features used, pages visited, actions taken, and session duration. This helps us improve the product.</p>
+    <p><strong>Communications.</strong> If you contact us by email or through the platform, we retain that correspondence.</p>
+    <p><strong>Payment information.</strong> If you subscribe to a paid plan, payments are processed by Stripe. We do not store your credit card number. Stripe's privacy policy governs the handling of payment data.</p>
+    <p><strong>Technical data.</strong> We collect your IP address, browser type, device type, and operating system when you access Rounds.</p>
+  </div>
+
+  <div class="section">
+    <h2>How we use your information</h2>
+    <p>We use the information we collect to:</p>
+    <ul>
+      <li>Create and manage your account and professional profile</li>
+      <li>Generate AI-assisted documentation, suggestions, translations, and SBAR scripts</li>
+      <li>Verify your professional credentials through publicly available registries</li>
+      <li>Display you in the staff directory to verified colleagues at your hospital</li>
+      <li>Facilitate patient transfers, care team communications, and direct messages between staff</li>
+      <li>Enforce free tier usage limits and rate limits</li>
+      <li>Send transactional emails — account confirmation, password resets, billing receipts</li>
+      <li>Improve the platform based on usage patterns</li>
+      <li>Detect and prevent fraud, abuse, or violations of our Terms of Service</li>
+      <li>Comply with legal obligations</li>
+    </ul>
+    <p><strong>We do not use clinical information you enter into Rounds to train AI models.</strong> The clinical notes, patient data, shift observations, and other documentation you create are processed to generate outputs for your use. They are not retained by our AI providers for model training beyond what their published policies specify.</p>
+  </div>
+
+  <div class="section">
+    <h2>Patient data — de-identification by design</h2>
+    <p>Rounds is designed so that individual nurses can use it effectively without entering any Protected Health Information (PHI). The free individual tier requires only de-identified clinical data:</p>
+    <ul>
+      <li>Room number (not a HIPAA identifier on its own)</li>
+      <li>Age in years (not date of birth)</li>
+      <li>Sex</li>
+      <li>Diagnosis or procedure</li>
+      <li>Clinical observations, vitals, and notes</li>
+    </ul>
+    <p>None of the above, in the combinations required to use Rounds, constitutes PHI under HIPAA when patient names, MRNs, and other direct identifiers are excluded.</p>
+    <p><strong>Do not enter patient names, dates of birth, medical record numbers, Social Security numbers, or any other direct patient identifiers into Rounds on the free individual tier.</strong> Doing so without a signed BAA is a violation of HIPAA and these Terms.</p>
+    <p>Hospitals and health systems that enroll in a Team or Enterprise plan and execute a BAA with Sirius AI may use Rounds with full PHI. In those cases, Sirius AI acts as a Business Associate under HIPAA and handles PHI in accordance with applicable law and the signed BAA.</p>
+  </div>
+
+  <div class="section">
+    <h2>AI processing</h2>
+    <p>Rounds uses AI systems to generate documentation assistance, clinical suggestions, translations, and SBAR scripts. When you submit information to generate AI content, that information is transmitted to our AI service provider for processing.</p>
+    <p>We have selected AI providers that offer Business Associate Agreements and data processing terms appropriate for healthcare contexts. Clinical information you submit is processed in real time to generate your requested output. It is not used to train AI models by us or our providers beyond what is described in their published data use policies.</p>
+    <p>AI-generated content may contain errors, omissions, or inaccuracies. All AI-generated content must be reviewed and verified by a licensed healthcare professional before use. See our Terms of Service for the full clinical disclaimer.</p>
+  </div>
+
+  <div class="section">
+    <h2>How we share your information</h2>
+    <p>We do not sell, rent, or trade your personal information to third parties for their marketing purposes.</p>
+    <p>We share information only in the following circumstances:</p>
+    <ul>
+      <li><strong>Staff directory.</strong> Your name, role, unit, credentials, and verification status are visible to other verified Rounds users at your hospital when you opt into the directory. You can turn this off in account settings.</li>
+      <li><strong>Care team features.</strong> When you send a message, leave a care team thread note, or initiate a patient transfer within Rounds, the content of that communication is visible to the intended recipient(s).</li>
+      <li><strong>Service providers.</strong> We work with Supabase (database and authentication), Stripe (payments), Vercel (hosting), and AI processing providers. These vendors have access to your information only to provide services on our behalf and are bound by data processing agreements.</li>
+      <li><strong>AI processing.</strong> Clinical information you submit for AI-generated outputs is transmitted to our AI service providers for real-time processing. We have BAAs with these providers where applicable.</li>
+      <li><strong>Legal requirements.</strong> We may disclose information if required by law, regulation, or valid legal process.</li>
+      <li><strong>Business transfers.</strong> If Sirius AI is acquired or merged with another company, your information may transfer as part of that transaction. We will notify you before this occurs.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Audit logs and access records</h2>
+    <p>Rounds maintains an audit log of every patient record lookup performed by staff members. This log records who accessed which patient record, when, and for what stated reason. This is a HIPAA compliance feature that protects patients and supports your institution's data access policies.</p>
+    <p>Audit log data is retained for a minimum of six years in accordance with HIPAA record retention requirements for covered entities and business associates.</p>
+  </div>
+
+  <div class="section">
+    <h2>Data retention</h2>
+    <p>We retain your account and profile information for as long as your account is active. If you delete your account, we will delete or anonymize your personal information within 30 days, except where we are required to retain it for legal or compliance reasons.</p>
+    <p>Patient records and shift documentation are retained for as long as your account is active. Discharged patient records are archived and retained indefinitely to support continuity of care and audit requirements. Audit log data is retained for a minimum of six years.</p>
+    <p>You may request deletion of your personal data at any time by contacting us. Note that some data — particularly audit logs — may be subject to legal retention requirements that prevent immediate deletion.</p>
+  </div>
+
+  <div class="section">
+    <h2>Security</h2>
+    <p>We implement industry-standard security measures appropriate for healthcare-adjacent data:</p>
+    <ul>
+      <li>All data transmitted between your browser and our servers is encrypted via HTTPS/TLS</li>
+      <li>All data stored in our database is encrypted at rest</li>
+      <li>Row-level security policies ensure each user can only access their own data and data they are authorized to see</li>
+      <li>Access controls limit which Sirius AI team members can access platform data</li>
+      <li>Audit logs track all access to patient records within the platform</li>
+    </ul>
+    <p>No system is 100% secure. If you discover a security vulnerability, please report it to us at <a href="mailto:samleebu12@gmail.com">samleebu12@gmail.com</a> before disclosing it publicly.</p>
+    <p>In the event of a data breach that affects PHI, we will notify affected users and, where applicable, the U.S. Department of Health and Human Services in accordance with HIPAA breach notification requirements.</p>
+  </div>
+
+  <div class="section">
+    <h2>Your rights</h2>
+    <p>You have the following rights regarding your personal information:</p>
+    <ul>
+      <li><strong>Access.</strong> You can request a copy of the personal information we hold about you.</li>
+      <li><strong>Correction.</strong> You can update your account information at any time from account settings.</li>
+      <li><strong>Deletion.</strong> You can request deletion of your account and associated data by emailing us.</li>
+      <li><strong>Directory opt-out.</strong> You can opt out of the staff directory at any time from account settings.</li>
+      <li><strong>Data portability.</strong> You can request an export of your personal data in a machine-readable format.</li>
+    </ul>
+    <p>To exercise any of these rights, contact us at <a href="mailto:samleebu12@gmail.com">samleebu12@gmail.com</a>. We will respond within 30 days.</p>
+    <p>If you are located in the European Economic Area, United Kingdom, or California, you may have additional rights under GDPR or CCPA. Contact us to exercise those rights.</p>
+  </div>
+
+  <div class="section">
+    <h2>HIPAA and Business Associate Agreements</h2>
+    <p>Rounds is designed for individual use with de-identified data and does not require a BAA for the free individual tier when used as designed.</p>
+    <p>For hospitals, health systems, and any use case involving PHI, Sirius AI is willing to execute a Business Associate Agreement. To request a BAA, contact us at <a href="mailto:samleebu12@gmail.com">samleebu12@gmail.com</a>. BAA execution is required before PHI may be entered into the platform.</p>
+  </div>
+
+  <div class="section">
+    <h2>Changes to this policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we make material changes, we will notify you by email or by posting a notice within the platform before the changes take effect. Your continued use of Rounds constitutes acceptance of the updated policy.</p>
+  </div>
+
+  <div class="section">
+    <h2>Contact us</h2>
+    <p>Questions about this Privacy Policy, your data, or our HIPAA compliance:</p>
+    <ul>
+      <li>Email: <a href="mailto:samleebu12@gmail.com">samleebu12@gmail.com</a></li>
+      <li>Website: <a href="https://rounds.sirius-ai.co">rounds.sirius-ai.co</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <a href="https://rounds.sirius-ai.co" class="footer-logo">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 1 L8 5.6 L13 7 L8 8.4 L7 13 L6 8.4 L1 7 L6 5.6 Z" fill="#e11d48"/>
+    </svg>
+    <span class="footer-word">Rounds</span>
+  </a>
+  <span class="footer-copy">© 2025 Sirius AI. All rights reserved.</span>
+  <div class="footer-links">
+    <a href="https://rounds.sirius-ai.co/privacy">Privacy</a>
+    <a href="https://rounds.sirius-ai.co/terms">Terms</a>
+    <a href="https://sirius-ai.co">Sirius</a>
+  </div>
+</footer>
+
+</body>
+</html>
